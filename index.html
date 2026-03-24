@@ -1,118 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>MindEase - Mental Health Support</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #c9d6ff, #e2e2e2);
-            text-align: center;
-        }
-
-        .container {
-            margin-top: 80px;
-            padding: 30px;
-            background: white;
-            width: 350px;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 15px;
-            box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
-        }
-
-        h1 {
-            color: #4a4a4a;
-        }
-
-        textarea {
-            width: 90%;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            resize: none;
-        }
-
-        button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background: #6c63ff;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #574fd6;
-        }
-
-        .response {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #333;
-        }
-
-        .quote {
-            margin-top: 30px;
-            font-style: italic;
-            color: #666;
-        }
-    </style>
+    <title>MindEase</title>
 </head>
 
-<body>
+<body style="font-family: Arial; text-align:center; padding:100px;">
 
-<div class="container">
     <h1>💙 MindEase</h1>
-    <p>Tell me how you're feeling today</p>
+    <p>Your safe space to talk.</p>
 
-    <textarea id="feeling" rows="4" placeholder="Type your thoughts..."></textarea>
-    <br>
-
-    <button onclick="giveResponse()">Get Support</button>
-
-    <div class="response" id="response"></div>
-
-    <div class="quote" id="quote"></div>
-</div>
-
-<script>
-    function giveResponse() {
-        const text = document.getElementById("feeling").value.toLowerCase();
-        let reply = "";
-
-        if (text.includes("sad") || text.includes("lonely")) {
-            reply = "I’m really sorry you’re feeling this way. You don’t have to go through it alone 💙";
-        } 
-        else if (text.includes("anxious") || text.includes("overthinking")) {
-            reply = "Take a deep breath. You’re safe right now. One step at a time 🌿";
-        } 
-        else if (text.includes("angry") || text.includes("frustrated")) {
-            reply = "It’s okay to feel angry. Try to pause and give yourself space 🔥";
-        } 
-        else if (text.includes("happy")) {
-            reply = "That’s beautiful! Hold onto this feeling ✨";
-        } 
-        else {
-            reply = "Whatever you're feeling is valid. I'm here for you 💛";
-        }
-
-        const quotes = [
-            "This moment will pass.",
-            "You are stronger than you think.",
-            "Healing takes time, and that's okay.",
-            "You deserve peace.",
-            "Small steps still move you forward."
-        ];
-
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-
-        document.getElementById("response").innerText = reply;
-        document.getElementById("quote").innerText = "🌸 " + randomQuote;
-    }
-</script>
+    <button onclick="window.location.href='chat.html'" 
+    style="padding:15px 25px; font-size:16px;">
+        Start Talking 💬
+    </button>
 
 </body>
 </html>

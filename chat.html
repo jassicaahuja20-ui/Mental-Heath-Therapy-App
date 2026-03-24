@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindEase Chat</title>
+</head>
+
+<body style="font-family: Arial; text-align:center; padding:50px;">
+
+    <h2>💙 Talk to MindEase</h2>
+
+    <textarea id="input" rows="5" cols="40" 
+    placeholder="How are you feeling?"></textarea>
+
+    <br><br>
+
+    <button onclick="goNext()" 
+    style="padding:12px 20px;">
+        Continue ➡️
+    </button>
+
+    <script>
+    function goNext() {
+        const text = document.getElementById("input").value;
+
+        // Save what user typed
+        localStorage.setItem("feeling", text);
+
+        // Go to next page
+        window.location.href = "result.html";
+    }
+    </script>
+
+</body>
+</html>

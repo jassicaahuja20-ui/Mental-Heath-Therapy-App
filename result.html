@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindEase Support</title>
+</head>
+
+<body style="font-family: Arial; text-align:center; padding:50px;">
+
+    <h2>💙 Your Support Space</h2>
+
+    <p id="userText"></p>
+    <h3 id="response"></h3>
+
+    <button onclick="goBack()" 
+    style="padding:10px 20px;">
+        Go Back 🔁
+    </button>
+
+    <script>
+    const text = localStorage.getItem("feeling") || "";
+
+    document.getElementById("userText").innerText = "You said: " + text;
+
+    let reply = "";
+
+    if (text.toLowerCase().includes("sad")) {
+        reply = "I'm really sorry you're feeling this way 💙 Try talking to someone you trust.";
+    } 
+    else if (text.toLowerCase().includes("anxious")) {
+        reply = "Take a deep breath. You're safe right now 🌿";
+    } 
+    else if (text.toLowerCase().includes("angry")) {
+        reply = "Pause before reacting. Give yourself space 🔥";
+    } 
+    else if (text.toLowerCase().includes("happy")) {
+        reply = "That’s amazing! Keep shining ✨";
+    } 
+    else {
+        reply = "Whatever you're feeling is valid. You're not alone 💛";
+    }
+
+    document.getElementById("response").innerText = reply;
+
+    function goBack() {
+        window.location.href = "index.html";
+    }
+    </script>
+
+</body>
+</html>
