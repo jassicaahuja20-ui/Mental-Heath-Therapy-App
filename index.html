@@ -2,45 +2,38 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindEase AI</title>
+<title>MindEase</title>
 
-<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- CSS -->
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body class="bg-[#0f172a] text-white flex justify-center">
+<body>
 
-<div class="app">
-
-<!-- HEADER -->
-<div class="header glass">
-    <h1>🌿 MindEase</h1>
+<!-- HERO -->
+<div class="hero">
+    <h1>💙 MindEase</h1>
+    <p>Your mental wellness companion</p>
+    <button onclick="startChat()">Start Your Journey</button>
 </div>
 
-<!-- CHAT -->
-<div id="chat" class="chat"></div>
+<!-- CHAT SECTION -->
+<div id="chatSection" class="chat-section hidden">
 
-<!-- TYPING -->
-<div id="typing" class="typing">AI is thinking...</div>
+    <div class="chat-box">
+        <div id="chat" class="chat"></div>
+        <div id="typing" class="typing"></div>
 
-<!-- INPUT -->
-<div class="input-area glass">
-    <input id="input" placeholder="Talk to me...">
-    <button onclick="send()">➤</button>
-</div>
-
-<!-- QUIZ BUTTON -->
-<button class="quiz-btn" onclick="startQuiz()">Take Assessment</button>
+        <div class="input-area">
+            <input id="input" placeholder="Talk freely...">
+            <button onclick="send()">➤</button>
+        </div>
+    </div>
 
 </div>
 
-<!-- JS -->
 <script src="script.js"></script>
 
 </body>
-</html>
 </html>

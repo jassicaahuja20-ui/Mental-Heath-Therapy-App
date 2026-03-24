@@ -1,55 +1,72 @@
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial;
+    background: linear-gradient(135deg, #1E3A8A, #8B5CF6);
+    color: white;
 }
 
-.app {
-    width: 100%;
-    max-width: 420px;
+/* HERO */
+.hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
 }
 
-.glass {
-    background: rgba(255,255,255,0.08);
+.hero h1 {
+    font-size: 50px;
+}
+
+.hero button {
+    padding: 12px 25px;
+    border-radius: 25px;
+    background: white;
+    color: black;
+}
+
+/* CHAT */
+.chat-section {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-box {
+    width: 600px;
+    height: 500px;
+    background: rgba(255,255,255,0.1);
     backdrop-filter: blur(20px);
-}
-
-.header {
-    padding: 15px;
-    text-align: center;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .chat {
     flex: 1;
     overflow-y: auto;
-    padding: 10px;
+    padding: 15px;
 }
 
 .msg {
-    padding: 12px;
-    border-radius: 16px;
-    margin: 6px;
-    max-width: 80%;
-    animation: slide 0.3s ease;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 12px;
+    max-width: 70%;
 }
 
 .user {
-    background: #8B5CF6;
+    background: #C084FC;
     margin-left: auto;
+    color: black;
 }
 
 .ai {
-    background: #1E3A8A;
+    background: #1E40AF;
 }
 
-.typing {
-    font-size: 12px;
-    opacity: 0.6;
-    padding-left: 10px;
-}
-
+/* INPUT */
 .input-area {
     display: flex;
     padding: 10px;
@@ -60,30 +77,27 @@ input {
     padding: 10px;
     border-radius: 20px;
     border: none;
+    color: black; /* FIXED TEXT COLOR */
 }
 
 button {
     margin-left: 5px;
     padding: 10px;
     border-radius: 20px;
-    background: #C084FC;
-    border: none;
-    cursor: pointer;
-    transition: 0.2s;
+    background: #10B981;
 }
 
-button:hover {
-    transform: scale(1.05);
+/* RESULT DASHBOARD */
+.result {
+    text-align: center;
+    padding: 50px;
 }
 
-.quiz-btn {
-    background: #FDBA74;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 20px;
-}
-
-@keyframes slide {
-    from {transform: translateY(10px); opacity: 0;}
-    to {transform: translateY(0); opacity: 1;}
+.bar {
+    width: 0%;
+    height: 20px;
+    background: #10B981;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: width 2s ease;
 }
