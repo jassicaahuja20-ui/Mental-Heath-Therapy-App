@@ -1,50 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MindEase Support</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindEase Report</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+body {
+background: linear-gradient(135deg,#020617,#0f172a);
+}
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center; padding:50px;">
+<body class="text-white text-center p-6">
 
-    <h2>💙 Your Support Space</h2>
+<h2 class="text-2xl mb-4">Your Mental Report 💙</h2>
 
-    <p id="userText"></p>
-    <h3 id="response"></h3>
+<div id="score" class="text-5xl mb-4">0%</div>
 
-    <button onclick="goBack()" 
-    style="padding:10px 20px;">
-        Go Back 🔁
-    </button>
+<p class="opacity-70">You’re doing better than you think 🌿</p>
 
-    <script>
-    const text = localStorage.getItem("feeling") || "";
+<button onclick="breath()" class="mt-4 bg-blue-500 px-4 py-2 rounded">
+Breathing Exercise
+</button>
 
-    document.getElementById("userText").innerText = "You said: " + text;
+<div id="breathBox" class="mt-6 text-xl"></div>
 
-    let reply = "";
+<button onclick="window.location.href='index.html'" class="mt-6 underline">
+Start Again
+</button>
 
-    if (text.toLowerCase().includes("sad")) {
-        reply = "I'm really sorry you're feeling this way 💙 Try talking to someone you trust.";
-    } 
-    else if (text.toLowerCase().includes("anxious")) {
-        reply = "Take a deep breath. You're safe right now 🌿";
-    } 
-    else if (text.toLowerCase().includes("angry")) {
-        reply = "Pause before reacting. Give yourself space 🔥";
-    } 
-    else if (text.toLowerCase().includes("happy")) {
-        reply = "That’s amazing! Keep shining ✨";
-    } 
-    else {
-        reply = "Whatever you're feeling is valid. You're not alone 💛";
-    }
+<script>
 
-    document.getElementById("response").innerText = reply;
+let mood = localStorage.getItem("mood") || 5;
+let score = mood * 10;
 
-    function goBack() {
-        window.location.href = "index.html";
-    }
-    </script>
+document.getElementById("score").innerText = score + "%";
+
+// animation
+gsap.from("#score",{scale:0, duration:1});
+
+// breathing
+function breath(){
+let box=document.getElementById("breathBox");
+
+gsap.to(box,{
+scale:1.5,
+duration:2,
+repeat:-1,
+yoyo:true,
+onUpdate:()=>{
+box.innerText="Breathe in… Breathe out 🌿";
+}
+});
+}
+
+</script>
 
 </body>
 </html>

@@ -1,18 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MindEase</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindEase</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+body {
+    background: linear-gradient(135deg, #1e40af, #8b5cf6, #10b981);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% {background-position: 0%}
+    50% {background-position: 100%}
+    100% {background-position: 0%}
+}
+
+.glass {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+}
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center; padding:100px;">
+<body class="text-white font-sans">
 
-    <h1>💙 MindEase</h1>
-    <p>Your safe space to talk.</p>
+<div class="h-screen flex flex-col justify-center items-center text-center px-6">
 
-    <button onclick="window.location.href='chat.html'" 
-    style="padding:15px 25px; font-size:16px;">
-        Start Talking 💬
+    <h1 id="title" class="text-5xl font-bold mb-4">
+        Your mental wellness companion
+    </h1>
+
+    <p class="opacity-80 mb-6">
+        Talk. Heal. Grow.
+    </p>
+
+    <button onclick="start()" 
+    class="bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">
+        Start Your Journey
     </button>
+
+    <div class="mt-10 text-xl" id="counter">0+</div>
+
+</div>
+
+<script>
+function start(){
+    window.location.href = "chat.html";
+}
+
+// counter animation
+let c=0;
+let el=document.getElementById("counter");
+let i=setInterval(()=>{
+    c+=200;
+    el.innerText=c+"+ happy users";
+    if(c>=10000) clearInterval(i);
+},50);
+
+// GSAP intro
+gsap.from("#title",{y:50, opacity:0, duration:1});
+</script>
 
 </body>
 </html>

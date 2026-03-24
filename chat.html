@@ -1,34 +1,116 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>MindEase Chat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindEase Chat</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<style>
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+}
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center; padding:50px;">
+<body class="text-white font-sans flex justify-center">
 
-    <h2>💙 Talk to MindEase</h2>
+<div class="w-[360px] h-screen flex flex-col">
 
-    <textarea id="input" rows="5" cols="40" 
-    placeholder="How are you feeling?"></textarea>
+<div class="p-4 text-center glass">💙 MindEase</div>
 
-    <br><br>
+<div id="chat" class="flex-1 overflow-y-auto p-3"></div>
 
-    <button onclick="goNext()" 
-    style="padding:12px 20px;">
-        Continue ➡️
-    </button>
+<div id="typing" class="text-sm opacity-60 px-3"></div>
 
-    <script>
-    function goNext() {
-        const text = document.getElementById("input").value;
+<div class="flex p-3 gap-2 glass">
+<input id="input" class="flex-1 p-2 rounded text-black" placeholder="Say anything...">
+<button onclick="send()" class="bg-purple-600 px-3 rounded">➤</button>
+</div>
 
-        // Save what user typed
-        localStorage.setItem("feeling", text);
+<!-- Quick replies -->
+<div class="flex gap-2 p-2">
+<button onclick="quick('anxious')" class="bg-white/20 px-2 rounded">Anxious</button>
+<button onclick="quick('sad')" class="bg-white/20 px-2 rounded">Sad</button>
+<button onclick="quick('motivation')" class="bg-white/20 px-2 rounded">Motivate</button>
+</div>
 
-        // Go to next page
-        window.location.href = "result.html";
-    }
-    </script>
+<input type="range" min="1" max="10" id="mood" class="mx-3">
+
+<button onclick="next()" class="m-3 bg-green-500 p-2 rounded">
+Analyze →
+</button>
+
+</div>
+
+<script>
+
+const responses = {
+anxious: [
+"take a slow breath… you’re safe 🌿",
+"your thoughts are loud, not always true",
+"you’re doing better than you think"
+],
+sad: [
+"i’m here with you 💙",
+"you don’t have to go through this alone",
+"this feeling will pass"
+],
+motivation: [
+"you survived 100% of your bad days",
+"you got this. seriously.",
+"keep going, you’re closer than you think"
+]
+};
+
+function quick(type){
+document.getElementById("input").value=type;
+}
+
+function send(){
+let input=document.getElementById("input");
+let chat=document.getElementById("chat");
+let typing=document.getElementById("typing");
+
+let text=input.value;
+if(!text) return;
+
+chat.innerHTML+=`<div class="bg-purple-600 p-2 rounded mt-2 ml-auto w-fit">${text}</div>`;
+input.value="";
+
+typing.innerText="typing...";
+
+setTimeout(()=>{
+typing.innerText="";
+
+let reply = responses[text]?.[Math.floor(Math.random()*3)] || "tell me more 💛";
+
+chat.innerHTML+=`<div class="bg-white/20 p-2 rounded mt-2 w-fit">${reply}</div>`;
+
+chat.scrollTop=chat.scrollHeight;
+
+localStorage.setItem("chat",chat.innerHTML);
+localStorage.setItem("mood",document.getElementById("mood").value);
+
+},800);
+}
+
+function next(){
+window.location.href="result.html";
+}
+
+window.onload=()=>{
+let saved=localStorage.getItem("chat");
+if(saved) document.getElementById("chat").innerHTML=saved;
+}
+
+</script>
 
 </body>
 </html>
