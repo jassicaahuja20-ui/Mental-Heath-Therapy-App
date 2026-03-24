@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.app {
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+}
+
+.header {
+    padding: 15px;
+    text-align: center;
+}
+
+.chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.msg {
+    padding: 12px;
+    border-radius: 16px;
+    margin: 6px;
+    max-width: 80%;
+    animation: slide 0.3s ease;
+}
+
+.user {
+    background: #8B5CF6;
+    margin-left: auto;
+}
+
+.ai {
+    background: #1E3A8A;
+}
+
+.typing {
+    font-size: 12px;
+    opacity: 0.6;
+    padding-left: 10px;
+}
+
+.input-area {
+    display: flex;
+    padding: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+}
+
+button {
+    margin-left: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #C084FC;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.quiz-btn {
+    background: #FDBA74;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+@keyframes slide {
+    from {transform: translateY(10px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
+}

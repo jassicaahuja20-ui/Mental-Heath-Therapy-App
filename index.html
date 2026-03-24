@@ -2,69 +2,45 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MindEase</title>
+<title>MindEase AI</title>
 
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-<style>
-body {
-    background: linear-gradient(135deg, #1e40af, #8b5cf6, #10b981);
-    background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
-}
+<!-- CSS -->
+<link rel="stylesheet" href="style.css">
 
-@keyframes gradientMove {
-    0% {background-position: 0%}
-    50% {background-position: 100%}
-    100% {background-position: 0%}
-}
-
-.glass {
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(20px);
-}
-</style>
 </head>
 
-<body class="text-white font-sans">
+<body class="bg-[#0f172a] text-white flex justify-center">
 
-<div class="h-screen flex flex-col justify-center items-center text-center px-6">
+<div class="app">
 
-    <h1 id="title" class="text-5xl font-bold mb-4">
-        Your mental wellness companion
-    </h1>
+<!-- HEADER -->
+<div class="header glass">
+    <h1>🌿 MindEase</h1>
+</div>
 
-    <p class="opacity-80 mb-6">
-        Talk. Heal. Grow.
-    </p>
+<!-- CHAT -->
+<div id="chat" class="chat"></div>
 
-    <button onclick="start()" 
-    class="bg-white text-black px-6 py-3 rounded-full hover:scale-105 transition">
-        Start Your Journey
-    </button>
+<!-- TYPING -->
+<div id="typing" class="typing">AI is thinking...</div>
 
-    <div class="mt-10 text-xl" id="counter">0+</div>
+<!-- INPUT -->
+<div class="input-area glass">
+    <input id="input" placeholder="Talk to me...">
+    <button onclick="send()">➤</button>
+</div>
+
+<!-- QUIZ BUTTON -->
+<button class="quiz-btn" onclick="startQuiz()">Take Assessment</button>
 
 </div>
 
-<script>
-function start(){
-    window.location.href = "chat.html";
-}
-
-// counter animation
-let c=0;
-let el=document.getElementById("counter");
-let i=setInterval(()=>{
-    c+=200;
-    el.innerText=c+"+ happy users";
-    if(c>=10000) clearInterval(i);
-},50);
-
-// GSAP intro
-gsap.from("#title",{y:50, opacity:0, duration:1});
-</script>
+<!-- JS -->
+<script src="script.js"></script>
 
 </body>
+</html>
 </html>
